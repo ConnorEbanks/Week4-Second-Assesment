@@ -32,7 +32,14 @@
 
 //CODE HERE
 
-
+const pizza = {
+  name: 'peperoni',
+  price: 8.99,
+  category: 'entree',
+  popularity: 8,
+  rating: 9,
+  tags: ['kids', 'adults', 'large', 'happyStomach']
+};
 
 //////////////////PROBLEM 2////////////////////
 /* 
@@ -44,6 +51,7 @@
 
 //CODE HERE
 
+console.log(pizza.popularity)
 
 /*
     Second, log the second tag in your pizza's
@@ -54,6 +62,7 @@
 
 //CODE HERE
 
+console.log(pizza.tags[1])
 
 /*
     Third, destructure the price off of the
@@ -64,6 +73,8 @@
 
 //CODE HERE
 
+let { price } = pizza
+console.log(price)
 
 /*
     Fourth, and last, destructure the category
@@ -74,6 +85,8 @@
 
 //CODE HERE
 
+let { category } = pizza
+console.log(category)
 
 //////////////////PROBLEM 3////////////////////
 /* 
@@ -89,7 +102,48 @@
 
 //CODE HERE
 
-
+const foodArr = [
+  {
+    name: 'Cheese',
+    price: 5,
+    category: 'Entree',
+    popularity: 9,
+    rating: 7,
+    tags: ['Gluten-Free', 'Kids'],
+  },
+  {
+    name: 'Pepperoni',
+    price: 8,
+    category: 'Entree',
+    popularity: 9,
+    rating: 7,
+    tags: ['Gluten-Free', 'Kids'],
+  },
+  {
+    name: 'Hawaiian',
+    price: 6,
+    category: 'Entree',
+    popularity: 7,
+    rating: 8,
+    tags: ['Kids', 'Gluten-Free'],
+  },
+  {
+    name: 'Meat',
+    price: 9,
+    category: 'Entree',
+    popularity: 10,
+    rating: 10,
+    tags: ['Men'],
+  },
+  {
+    name: 'Mushroom',
+    price: 1,
+    category: 'Appetizer',
+    popularity: 1,
+    rating: 1,
+    tags: ['Old People'],
+  },
+]
 
 //////////////////PROBLEM 4////////////////////
 /* 
@@ -105,9 +159,25 @@
 
 //CODE HERE
 
-// const filteredFood = foodArr.filter(/* CALLBACK HERE */)
+const foodByTag = (foodObj) => {
+  const isFoodTag = foodObj.tags.includes('Old People')
+  return isFoodTag
+}
+
+const filteredFood = foodArr.filter(foodByTag)
+
+console.log(filteredFood)
+
+// const getFoodByGlutenFreeTag = (foodObj) => {
+//     const isTagIncluded = foodObj.tags.includes('Gluten-Free')
+    
+//     return isTagIncluded
+// }
+
+// const filteredFood = foodArr.filter(getFoodByGlutenFreeTag)
 
 
+// console.log(filteredFood)
 
 //////////////////PROBLEM 5////////////////////
 /* 
@@ -141,7 +211,7 @@
         if it is, return objects whose value for the given
         property is greater than the `number` passed in
 
-        If the type isn't `below`, return objects whose
+        If the type isn't `above`, return objects whose
         value for the given property is less than the 
         `number` passed in
     
@@ -150,12 +220,38 @@
 
 //CODE HERE
 
+const filterByProperty = (property, number, type) => {
+    const filterByProperty = (food) => {
+      const isAbove = type === 'above'
+      const value = food[property]
+
+      if (isAbove) {
+        if (value > number) {
+          return food
+        }
+      } else {
+        if (value < number) {
+          return food
+        }
+      }
+    }
+    
+    const filteredArray = foodArr.filter(filterByProperty)
+
+    return filteredArray
+  }
+  
+
 
 /*
     Invoke the `filterByProperty` function passing
-    in a value for each paramter.
+    in a value for each parameter.
 
     You'll have to console.log to see the filtered array
 */
 
 //CODE HERE
+
+  console.log(filterByProperty('price', 6, 'below'))
+  console.log(filterByProperty('popularity', 3, 'above'))
+  console.log(filterByProperty('rating', 4, 'above'))

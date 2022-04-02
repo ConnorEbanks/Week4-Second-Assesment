@@ -7,6 +7,8 @@
     page of the restaurant's website.
 */
 
+const { del } = require("express/lib/application")
+
 
 //////////////////PROBLEM 1////////////////////
 /* 
@@ -24,8 +26,11 @@
 //CODE HERE
 
 
+const greetUser = (username) => {
+   return (`Welcome back, ${username}`)
+}
 
-
+console.log(greetUser('Connor'))
 
 //////////////////PROBLEM 2////////////////////
 /* 
@@ -52,6 +57,14 @@ const deliveryAreaZipCodes = [85205, 85204, 85203, 85213, 85206]
 //CODE HERE
 
 
+function canWeDeliver(zipCode) {
+    for (let i = 0; i < deliveryAreaZipCodes.length; i++) {
+        if (deliveryAreaZipCodes[i] === zipCode) {
+            return ("You're in our delivery zone!")
+        } 
+      }  return ("Sorry, we cant deliver to that address.")      
+    }
+console.log(canWeDeliver(85206))
 
 /* 
     Problem 2 Continued
@@ -72,6 +85,16 @@ const deliveryAreaZipCodes = [85205, 85204, 85203, 85213, 85206]
 
 // CODE HERE
 
+function canWeDeliverTwo(zipCode) {
+   
+    if (deliveryAreaZipCodes.includes(zipCode)) {
+        return ("You're in our delivery zone!")
+    } else {
+        return ("Sorry, we cant deliver to that address.") 
+    }
+}
+
+console.log(canWeDeliverTwo(85213))
 
 //////////////////PROBLEM 3////////////////////
 /* 
@@ -108,6 +131,10 @@ const deals = [
 
 //CODE HERE
 
+console.log(deals)
+console.log(deals[0])
+deals[0].title = deals[0].title.replace('15', '10')
+console.log(deals[0].title)
 
 
 /*
@@ -124,3 +151,8 @@ const deals = [
 */
 
 //CODE HERE
+
+console.log(deals)
+console.log(deals[1])
+deals[1].desc = deals[1].desc.replace('March', 'April').trim()
+console.log(deals[1].desc)

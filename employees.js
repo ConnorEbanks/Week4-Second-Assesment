@@ -22,18 +22,15 @@
 //CODE HERE
 
 class Employee {
-    constructor(name, shifts){
-        this.name = name
-        this.shifts = shifts
+    constructor(name, shifts) {
+        this.name = name;
+        this.shifts = shifts;
     }
-
-    function getSchedule() {
-         return (`${this.name} works on ${this.shifts}`)
+    getSchedule () {
+        return (`${this.name} works on ${this.shifts}`);
     }
+}  
 
-const newInfo = new Employee('Connor', 'Monday, Wednesday, and Friday')
-
-console.log(newInfo)
 
 /*
     Create a new instance of your class.
@@ -47,6 +44,9 @@ console.log(newInfo)
 
 //CODE HERE
 
+const empOne = new Employee('Jess', 'weekday mornings, weekday afternoons')
+console.log(empOne)
+
 /*
     Call the `getSchedule` method on the
     `empOne` object.
@@ -54,6 +54,7 @@ console.log(newInfo)
 
 //CODE HERE
 
+console.log(empOne.getSchedule())
 
 /*
     Make a copy of the empOne object
@@ -69,7 +70,8 @@ console.log(newInfo)
 
 //CODE HERE
 
-
+empTwo = {...empOne, name:'Nick'}
+console.log({ empTwo })
 
 //////////////////PROBLEM 2////////////////////
 /*  
@@ -96,7 +98,21 @@ console.log(newInfo)
 
 //CODE HERE
 
+class Manager extends Employee {
+    constructor(name, shifts, employees) {
+        super (name, shifts)
+        this.name = name;
+        this.shifts = shifts;
+        this.employees = employees;
+    }
+    getEmployees () {
+        return (`${this.name} manages ${this.employees}`);
+    }
 
+    addEmployee (emp) {
+        return (this.employees.push(emp))
+    }
+    } 
 
 /*
     Create a new instance of your class.
@@ -111,6 +127,7 @@ console.log(newInfo)
 
 //CODE HERE
 
+const newManager = new Manager('Connor', 'Weekday mornings, weekend nights', ['Eric', ' Kyle', ' Walt', ' Mike']);
 
 /*
     Call the `getEmployees` method on the
@@ -118,6 +135,8 @@ console.log(newInfo)
 */
 
 //CODE HERE
+
+console.log(newManager.getEmployees())
 
 /*
     Call the `addEmployee` method on the 
@@ -127,6 +146,8 @@ console.log(newInfo)
 
 //CODE HERE 
 
+newManager.addEmployee(' Coach')
+
 /*
     Call the `getEmployees` method on the
     `manager` object again to confirm 
@@ -134,3 +155,5 @@ console.log(newInfo)
 */
 
 //CODE HERE
+
+console.log(newManager.getEmployees())
